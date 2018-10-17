@@ -9,6 +9,10 @@ $(document).ready(function () {
     var correctIndex;
     var firstClick = true;
 
+    //counters
+    var numberCorrectAnswers=0;
+    var numberWrongAnswers=0;
+
     var question = {
         number: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         text: ["What was the first publicly traded U.S. company to reach a $1 trillion market cap?",
@@ -130,10 +134,11 @@ $(document).ready(function () {
     function showAnswerButtons() {
 
         //display the buttons
-        document.getElementById("A").style.display = "block";
-        document.getElementById("B").style.display = "block";
-        document.getElementById("C").style.display = "block";
-        document.getElementById("D").style.display = "block";
+        resetButtons()
+        // document.getElementById("A").style.display = "block";
+        // document.getElementById("B").style.display = "block";
+        // document.getElementById("C").style.display = "block";
+        // document.getElementById("D").style.display = "block";
 
         //hide the gif
         document.getElementById("gifHolder").style.display = "none";
@@ -189,6 +194,17 @@ $(document).ready(function () {
 
     }
 
+    function resetButtons() {
+        document.getElementById("A").style.display = "block";
+        document.getElementById("A").style.background = "blue";
+        document.getElementById("B").style.display = "block";
+        document.getElementById("B").style.background = "blue"
+        document.getElementById("C").style.display = "block";
+        document.getElementById("C").style.background = "blue"
+        document.getElementById("D").style.display = "block";
+        document.getElementById("D").style.background = "blue"
+
+    }
     function showStartButton() {
 
         //Hide the answer buttons
@@ -196,7 +212,7 @@ $(document).ready(function () {
         document.getElementById("B").style.display = "none";
         document.getElementById("C").style.display = "none";
         document.getElementById("D").style.display = "none";
-
+    
         //Hide the gif holder
         document.getElementById("gifHolder").style.display = "none";
 
@@ -251,6 +267,7 @@ $(document).ready(function () {
         //show the correct answer
         showCorrectAnswer(correctIndex)
 
+        numberCorrectAnswers ++
         setTimeout(function () {
             showGif()
             loadGif("winner")
@@ -287,6 +304,8 @@ $(document).ready(function () {
         }
 
     }
+
+    
     function startTimer() {
         clearInterval(intervalId);
         timer = 10;
@@ -330,6 +349,7 @@ $(document).ready(function () {
         //state answer is incorrect
         $("#timerRow").html("WRONG!");
 
+        numberWrongAnswers++
 
         //show the correct answer
         showCorrectAnswer(correctIndex);
@@ -367,12 +387,12 @@ $(document).ready(function () {
 
                 //check the number of questions
                 $("#gifHolder").attr("src", "")
-
+                // resetButtons()
                 showAnswerButtons()
                 postQuestion()
                 startTimer()
 
-            }, 2000);
+            }, 3000);
             // alert(this.id)
 
 
