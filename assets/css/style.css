@@ -1,0 +1,35 @@
+@font-face {
+    font-family: DOTMBold;
+    src: url(../fonts/DOTMBold.ttf);
+
+}
+
+
+#titleRow {
+font-family: "DOTMBold";
+font-size: 60px;
+text-align: center;
+}
+
+#timerRow {
+    font-family: "DOTMBold";
+font-size: 60px;
+text-align: center;
+
+}
+body {
+    background-image: url("../images/techBackground3.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: black;
+    background-size: cover;
+}
+#box {
+    /* border-style: solid;
+    border-color: darkblue;
+    border-width: 2px; */
+
+    }
+
+
+    
