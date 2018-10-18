@@ -1,6 +1,7 @@
 @font-face {
     font-family: DOTMBold;
-    src: url(../fonts/DOTMBold.ttf);
+    src: url(../fonts/DOTMBOLD.TTF);
+    /* src: url(../fonts/DOTMATRI.TTF); */
 
 }
 
@@ -9,12 +10,16 @@
 font-family: "DOTMBold";
 font-size: 60px;
 text-align: center;
+padding-top: 20px;
 }
 
 #timerRow {
-    font-family: "DOTMBold";
-font-size: 60px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 40px;
 text-align: center;
+border-style: solid;
+border-color: darkblue;
+border-width: 2px;
 
 }
 body {
@@ -24,14 +29,38 @@ body {
     background-color: black;
     background-size: cover;
 }
-#box {
-    /* border-style: solid;
-    border-color: darkblue;
-    border-width: 2px; */
 
+#directions {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+
+}
+
+#questionRow {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+}
+#box {
+    border-style: solid;
+    border-color: green;
+    border-width: 2px;
+    /* background-color: */
     }
 
 .btn {
-    background-color: blue;
+    background-color: darkblue;
+}
+#gifHolder {
+    border-radius: 25px;
+    border-style:solid;
+    border-width:2px;
+    border-color:white;
+    margin: auto;
 }
     
