@@ -195,11 +195,19 @@ $(document).ready(function () {
 
         }
         else {
-            alert("Game over")
+            //GAME OVER
             $("#timerRow").html("Game Over")
             stopTimer()
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
+
+            //show the results
+            document.getElementById("correctAnswers").style.display = "block";
+            document.getElementById("correctAnswers").innerHTML = "Correct Answers: "  + numberCorrectAnswers;
+             
+            document.getElementById("incorrectAnswers").style.display = "block";
+            document.getElementById("incorrectAnswers").innerHTML = "Incorrect Answers: " + numberWrongAnswers;
+             
             gameSetup()
         };
 
@@ -249,6 +257,8 @@ $(document).ready(function () {
 
         //don;t allow a click
         allowClick=false;
+
+        numberWrongAnswers++
 
         //state times up
         $("#timerRow").html("Times up!")
@@ -313,7 +323,7 @@ $(document).ready(function () {
             document.getElementById("gifHolder").style.display = "none";
             resetButtons()
             postQuestion()
-            startTimer()
+            // startTimer()
 
             //now allow a click
             allowClick=true
@@ -350,7 +360,7 @@ $(document).ready(function () {
             // $("#timerRow").css({'background-color':''});​
             resetButtons()
             postQuestion()
-            startTimer()
+            // startTimer()
 
             //now allow a click
             allowClick=true
@@ -431,6 +441,8 @@ $(document).ready(function () {
                 firstClick = false;
                 document.getElementById("start-button").style.display = "none";
                 document.getElementById("questionRow").style.display = "block";
+                document.getElementById("incorrectAnswers").style.display = "none";
+                document.getElementById("correctAnswers").style.display = "none";
                 postQuestion()
                 startTimer()
             }
@@ -438,10 +450,12 @@ $(document).ready(function () {
 
                 if (correctAnswerIs == this.id) {
                     correctAnswer()
+                    startTimer()
                 }
                 else {
 
                     badAnswer();
+                    startTimer()
 
                 }
 

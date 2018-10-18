@@ -1,14 +1,16 @@
 @font-face {
-    font-family: DOTMBold;
-    src: url(../fonts/DOTMBOLD.TTF);
-    /* src: url(../fonts/DOTMATRI.TTF); */
-
+    font-family: DOTMATRI;
+    src: url(../fonts/DOTMATRI.TTF);
 }
 
+@font-face {
+    font-family: DOTMBold;
+    src: url(../fonts/DOTMBold.TTF);
+}
 
 #titleRow {
 font-family: "DOTMBold";
-font-size: 60px;
+font-size: 50px;
 text-align: center;
 padding-top: 20px;
 }
@@ -23,6 +25,8 @@ border-style: solid;
 border-color: darkblue;
 border-width: 2px;
 background-color: darkblue;
+margin-top:20px;
+margin-bottom:20px;
 
 }
 body {
@@ -35,9 +39,10 @@ body {
 
 #directions {
     font-family: Arial, Helvetica, sans-serif;
+    font-style:italic;
     font-size: 20px;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 
 }
 
@@ -46,15 +51,17 @@ body {
     font-size: 30px;
     text-align: center;
     padding-bottom: 20px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 
 }
 #box {
+   margin: 2%;
+    border-radius: 25px;
     border-style: solid;
-    border-color: green;
-    border-width: 2px;
-    /* background-color: */
-    height: 400px;
+    border-color: rgb(178,202,192);
+    border-width: 4px;
+    background-color:rgb(237,233,232);
+    height: 500px;
     }
 
 .btn {
@@ -66,5 +73,11 @@ body {
     border-width:2px;
     border-color:white;
     margin: auto;
+}
+.results{
+    margin-top:40px;
+    font-family: "DOTMATRI";
+    font-size: 30px;
+    text-align: center;
 }
     
