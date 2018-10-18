@@ -16,10 +16,13 @@ padding-top: 20px;
 #timerRow {
 font-family: Arial, Helvetica, sans-serif;
 font-size: 40px;
+border-radius: 25px;
+color:white;
 text-align: center;
 border-style: solid;
 border-color: darkblue;
 border-width: 2px;
+background-color: darkblue;
 
 }
 body {
@@ -51,6 +54,7 @@ body {
     border-color: green;
     border-width: 2px;
     /* background-color: */
+    height: 400px;
     }
 
 .btn {
