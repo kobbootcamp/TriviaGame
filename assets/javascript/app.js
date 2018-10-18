@@ -246,11 +246,16 @@ $(document).ready(function () {
 
         //intialize the asked array
         asked = [];
+
         //hide the gif
         document.getElementById("gifHolder").style.display = "none";
         document.getElementById("questionRow").style.display = "none";
         firstClick = true
         showStartButton()
+
+        //reset the counters
+        numberCorrectAnswers = 0;
+        numberWrongAnswers = 0;
     }
 
     function timesUp() {
@@ -271,7 +276,6 @@ $(document).ready(function () {
         setTimeout(function () {
             showGif();
             loadGif("timesUp");
-
         }, 1000);
 
         clearInterval(intervalId);

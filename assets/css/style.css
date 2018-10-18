@@ -22,13 +22,13 @@ border-radius: 25px;
 color:white;
 text-align: center;
 border-style: solid;
-border-color: darkblue;
+border-color: darkcyan;
 border-width: 2px;
-background-color: darkblue;
+background-color: darkcyan;
 margin-top:20px;
 margin-bottom:20px;
-
 }
+
 body {
     background-image: url("../images/techBackground3.jpg");
     background-repeat: no-repeat;
@@ -43,7 +43,6 @@ body {
     font-size: 20px;
     text-align: center;
     padding-bottom: 10px;
-
 }
 
 #questionRow {
@@ -51,9 +50,9 @@ body {
     font-size: 30px;
     text-align: center;
     padding-bottom: 20px;
-    /* padding-top: 20px; */
-
+    margin-bottom: 10px;
 }
+
 #box {
    margin: 2%;
     border-radius: 25px;
@@ -61,12 +60,13 @@ body {
     border-color: rgb(178,202,192);
     border-width: 4px;
     background-color:rgb(237,233,232);
-    height: 500px;
+    height: 550px;
     }
 
 .btn {
     background-color: darkblue;
 }
+
 #gifHolder {
     border-radius: 25px;
     border-style:solid;
@@ -74,10 +74,11 @@ body {
     border-color:white;
     margin: auto;
 }
+
 .results{
     margin-top:40px;
     font-family: "DOTMATRI";
-    font-size: 30px;
+    font-size: 45px;
     text-align: center;
 }
     
