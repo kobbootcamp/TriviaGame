@@ -220,13 +220,13 @@ $(document).ready(function () {
 
         //show the answer buttons and change the background back to blue
         document.getElementById("A").style.display = "block";
-        document.getElementById("A").style.background = "darkblue";
+        document.getElementById("A").style.background = "rgb(51, 102, 153)";
         document.getElementById("B").style.display = "block";
-        document.getElementById("B").style.background = "darkblue"
+        document.getElementById("B").style.background = "rgb(51, 102, 153)"
         document.getElementById("C").style.display = "block";
-        document.getElementById("C").style.background = "darkblue"
+        document.getElementById("C").style.background = "rgb(51, 102, 153)"
         document.getElementById("D").style.display = "block";
-        document.getElementById("D").style.background = "darkblue"
+        document.getElementById("D").style.background = "rgb(51, 102, 153)"
 
     }
     function showStartButton() {
@@ -273,8 +273,8 @@ $(document).ready(function () {
         $("#timerRow").html("Times up!")
 
         //change the colors
-        document.getElementById("timerRow").style.backgroundColor = "rgb(237,233,232)";
-        document.getElementById("timerRow").style.color = "darkorange";
+        document.getElementById("timerRow").style.backgroundColor = "rgb(238, 186, 76)";  //yellow
+        document.getElementById("timerRow").style.color = "rgb(237,233,232)"; //background white
 
         //display the correct answer
         showCorrectAnswer(correctIndex);
@@ -293,8 +293,8 @@ $(document).ready(function () {
             document.getElementById("gifHolder").style.display = "none";
 
             //reset the colors of the timer row
-            document.getElementById("timerRow").style.backgroundColor = "darkcyan";
-            document.getElementById("timerRow").style.color = "rgb(237,233,232)";
+            document.getElementById("timerRow").style.backgroundColor = "darkcyan"; 
+            document.getElementById("timerRow").style.color = "rgb(237,233,232)";   //background white
 
             //reset the buttons
             resetButtons();
@@ -326,8 +326,8 @@ $(document).ready(function () {
         $("#timerRow").html("CORRECT!")
 
         //change the colors of the timer row
-        document.getElementById("timerRow").style.backgroundColor = "rgb(237,233,232)";
-        document.getElementById("timerRow").style.color = "green";
+        document.getElementById("timerRow").style.backgroundColor = "rgb(35, 181, 175)"; //light green
+        document.getElementById("timerRow").style.color = "rgb(237,233,232)";   //background white
 
         //show the correct answer
         showCorrectAnswer(correctIndex)
@@ -344,8 +344,8 @@ $(document).ready(function () {
 
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
-            document.getElementById("timerRow").style.backgroundColor = "darkcyan";
-            document.getElementById("timerRow").style.color = "rgb(237,233,232)";
+            document.getElementById("timerRow").style.backgroundColor = "darkcyan"; //green
+            document.getElementById("timerRow").style.color = "rgb(237,233,232)"; //background white
             resetButtons()
             postQuestion()
             // startTimer()
@@ -368,8 +368,8 @@ $(document).ready(function () {
         $("#timerRow").html("WRONG!");
 
         //change color of timer row
-        document.getElementById("timerRow").style.backgroundColor = "rgb(237,233,232)";
-        document.getElementById("timerRow").style.color = "red";
+        document.getElementById("timerRow").style.backgroundColor = "rgb(227, 73, 59)"; //background white
+        document.getElementById("timerRow").style.color = "rgb(237,233,232)"; //tomato red
 
         //increment the wrong answer counter
         numberWrongAnswers++
@@ -392,7 +392,7 @@ $(document).ready(function () {
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
             document.getElementById("timerRow").style.backgroundColor = "darkcyan";
-            document.getElementById("timerRow").style.color = "rgb(237,233,232)";
+            document.getElementById("timerRow").style.color = "rgb(237,233,232)"; //background white
             resetButtons()
             postQuestion()
 
@@ -407,19 +407,19 @@ $(document).ready(function () {
         switch (correctLetter) {
             case "A":
                 // document.getElementById("A").style.display = "block";
-                document.getElementById("A").style.background = "orange"
+                document.getElementById("A").style.background = "rgb(238, 186, 76)" //yelloworange
                 break;
             case "B":
                 // document.getElementById("B").style.display = "block";
-                document.getElementById("B").style.background = "orange"
+                document.getElementById("B").style.background = "rgb(238, 186, 76)" //yelloworange
                 break;
             case "C":
                 // document.getElementById("C").style.display = "block";
-                document.getElementById("C").style.background = "orange"
+                document.getElementById("C").style.background = "rgb(238, 186, 76)" //yelloworange
                 break;
             case "D":
                 // document.getElementById("D").style.display = "block";
-                document.getElementById("D").style.background = "orange"
+                document.getElementById("D").style.background = "rgb(238, 186, 76)" //yelloworange
                 break;
         }
 

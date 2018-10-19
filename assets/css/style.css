@@ -13,6 +13,7 @@ font-family: "DOTMBold";
 font-size: 50px;
 text-align: center;
 padding-top: 20px;
+color: rgb(58, 58, 60);
 }
 
 #timerRow {
@@ -59,13 +60,14 @@ body {
     border-radius: 25px;
     border-style: solid;
     border-color: rgb(178,202,192);
+    /* border-color: rgb(58, 58, 60); */
     border-width: 4px;
     background-color:rgb(237,233,232);
     height: 550px;
     }
 
 .btn {
-    background-color: darkblue;
+    background-color:rgb(51, 102, 153);
 }
 
 #gifHolder {
@@ -81,5 +83,6 @@ body {
     font-family: "DOTMATRI";
     font-size: 45px;
     text-align: center;
+    color: rgb(58, 58, 60);
 }
     
