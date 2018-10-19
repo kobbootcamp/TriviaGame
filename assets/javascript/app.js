@@ -144,7 +144,7 @@ $(document).ready(function () {
     }
 
     function postQuestion() {
-console.log(asked)
+        console.log(asked)
         //is game still on?
         if (asked.length < 10) {
 
@@ -158,15 +158,15 @@ console.log(asked)
                 var random = Math.floor(Math.random() * question.text.length)
 
                 //check to see if the question has already been asked (part of the asked array)
-                        if (asked.indexOf(random)> 0){
+                if (asked.indexOf(random) > 0) {
 
-                        //question asked, pick new question
-                        findNewQuestion=true;
-                    } else {
-                        //not asked yet, exit loop
-                        findNewQuestion=false;
-                    }
+                    //question asked, pick new question
+                    findNewQuestion = true;
+                } else {
+                    //not asked yet, exit loop
+                    findNewQuestion = false;
                 }
+            }
 
             //add the question to the asked array
             asked.push(random);
@@ -205,11 +205,11 @@ console.log(asked)
 
             //show the results
             document.getElementById("correctAnswers").style.display = "block";
-            document.getElementById("correctAnswers").innerHTML = "Correct Answers: "  + numberCorrectAnswers;
-             
+            document.getElementById("correctAnswers").innerHTML = "Correct Answers: " + numberCorrectAnswers;
+
             document.getElementById("incorrectAnswers").style.display = "block";
             document.getElementById("incorrectAnswers").innerHTML = "Incorrect Answers: " + numberWrongAnswers;
-             
+
             //reset the game
             gameSetup()
         };
@@ -264,7 +264,7 @@ console.log(asked)
     function timesUp() {
 
         //don;t allow a click
-        allowClick=false;
+        allowClick = false;
 
         //increment the wrong answer counter
         numberWrongAnswers++
@@ -273,8 +273,8 @@ console.log(asked)
         $("#timerRow").html("Times up!")
 
         //change the colors
-        document.getElementById("timerRow").style.backgroundColor="rgb(237,233,232)";
-        document.getElementById("timerRow").style.color="darkorange";
+        document.getElementById("timerRow").style.backgroundColor = "rgb(237,233,232)";
+        document.getElementById("timerRow").style.color = "darkorange";
 
         //display the correct answer
         showCorrectAnswer(correctIndex);
@@ -293,17 +293,17 @@ console.log(asked)
             document.getElementById("gifHolder").style.display = "none";
 
             //reset the colors of the timer row
-            document.getElementById("timerRow").style.backgroundColor="darkcyan";
-            document.getElementById("timerRow").style.color="rgb(237,233,232)";
+            document.getElementById("timerRow").style.backgroundColor = "darkcyan";
+            document.getElementById("timerRow").style.color = "rgb(237,233,232)";
 
             //reset the buttons
             resetButtons();
 
             //find the next question
             postQuestion();
-            
+
             //now allow a click
-            allowClick=true
+            allowClick = true
 
         }, 3000);
 
@@ -314,7 +314,7 @@ console.log(asked)
     function correctAnswer() {
 
         //don;t allow a click
-        allowClick=false
+        allowClick = false
 
         //increment the correct answer counter
         numberCorrectAnswers++
@@ -326,8 +326,8 @@ console.log(asked)
         $("#timerRow").html("CORRECT!")
 
         //change the colors of the timer row
-        document.getElementById("timerRow").style.backgroundColor="rgb(237,233,232)";
-        document.getElementById("timerRow").style.color="green";
+        document.getElementById("timerRow").style.backgroundColor = "rgb(237,233,232)";
+        document.getElementById("timerRow").style.color = "green";
 
         //show the correct answer
         showCorrectAnswer(correctIndex)
@@ -344,14 +344,14 @@ console.log(asked)
 
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
-            document.getElementById("timerRow").style.backgroundColor="darkcyan";
-            document.getElementById("timerRow").style.color="rgb(237,233,232)";
+            document.getElementById("timerRow").style.backgroundColor = "darkcyan";
+            document.getElementById("timerRow").style.color = "rgb(237,233,232)";
             resetButtons()
             postQuestion()
             // startTimer()
 
             //now allow a click
-            allowClick=true
+            allowClick = true
         }, 3000);
 
     };
@@ -359,17 +359,17 @@ console.log(asked)
     function badAnswer() {
 
         //don't allow a click
-        allowClick=false
+        allowClick = false
 
         //stop the timer
         stopTimer()
 
         //state answer is incorrect
         $("#timerRow").html("WRONG!");
-        
+
         //change color of timer row
-        document.getElementById("timerRow").style.backgroundColor="rgb(237,233,232)";
-        document.getElementById("timerRow").style.color="red";
+        document.getElementById("timerRow").style.backgroundColor = "rgb(237,233,232)";
+        document.getElementById("timerRow").style.color = "red";
 
         //increment the wrong answer counter
         numberWrongAnswers++
@@ -391,14 +391,14 @@ console.log(asked)
         setTimeout(function () {
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
-            document.getElementById("timerRow").style.backgroundColor="darkcyan";
-            document.getElementById("timerRow").style.color="rgb(237,233,232)";
+            document.getElementById("timerRow").style.backgroundColor = "darkcyan";
+            document.getElementById("timerRow").style.color = "rgb(237,233,232)";
             resetButtons()
             postQuestion()
 
             //now allow a click
-            allowClick=true
-        }, 3500);
+            allowClick = true
+        }, 4000);
 
     };
     function showCorrectAnswer(index) {
