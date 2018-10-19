@@ -1,21 +1,22 @@
 $(document).ready(function () {
 
     //show the start button to begin the game
-    showStartButton()
+    showStartButton();
 
     //variables
     var asked = [];  //questions that are asked are pushed into asked array
     var timer = 10;  //timer is set to 10 seconds
-    var intervalId;
-    var correctAnswerIs;
-    var correctIndex;
-    var firstClick = true;
-    var allowClick = true;
+    var intervalId; //the interval variable
+    var correctAnswerIs; //the correct letter choice
+    var correctIndex; //index number of the correct answer
+    var firstClick = true; //the first click is to start the game, the following click are to answer questions
+    var allowClick = true; //sometimes we want to halt the clicking action
 
     //counters
     var numberCorrectAnswers = 0;
     var numberWrongAnswers = 0;
 
+    //question object
     var question = {
         number: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         text: ["What was the first publicly traded U.S. company to reach a $1 trillion market cap?",
@@ -41,6 +42,7 @@ $(document).ready(function () {
 
     };
 
+    //wrong answer gif object
     var wrongAnswer = {
         gif: ["https://media.giphy.com/media/3o7qE1bQOcKqwBGUQ8/giphy.gif",
             "https://media.giphy.com/media/XQVEc2S7knPBm/giphy.gif",
@@ -64,6 +66,7 @@ $(document).ready(function () {
             "https://media.giphy.com/media/PNug04TwLpA0i1d54D/giphy.gif"]
     };
 
+    //correct answer gif object
     var rightAnswer = {
         gif: ["https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif",
             "https://media.giphy.com/media/xUPGcMzwkOY01nj6hi/giphy.gif",
@@ -86,6 +89,7 @@ $(document).ready(function () {
             "https://media.giphy.com/media/xT0xevrRDWAGgLaxm8/giphy.gif"]
     };
 
+    //out of time gif object
     var outOfTime = {
         gif: ["https://media.giphy.com/media/xUySTEJYS5F1Cayg92/giphy.gif",
             "https://media.giphy.com/media/ZO91JK6HBDeCMQXkK4/giphy.gif",
@@ -220,13 +224,13 @@ $(document).ready(function () {
 
         //show the answer buttons and change the background back to blue
         document.getElementById("A").style.display = "block";
-        document.getElementById("A").style.background = "rgb(51, 102, 153)";
+        document.getElementById("A").style.background = "rgb(51, 102, 153)";  //blue
         document.getElementById("B").style.display = "block";
-        document.getElementById("B").style.background = "rgb(51, 102, 153)"
+        document.getElementById("B").style.background = "rgb(51, 102, 153)"; //blue
         document.getElementById("C").style.display = "block";
-        document.getElementById("C").style.background = "rgb(51, 102, 153)"
+        document.getElementById("C").style.background = "rgb(51, 102, 153)"; //blue
         document.getElementById("D").style.display = "block";
-        document.getElementById("D").style.background = "rgb(51, 102, 153)"
+        document.getElementById("D").style.background = "rgb(51, 102, 153)"; //blue
 
     }
     function showStartButton() {
@@ -242,7 +246,7 @@ $(document).ready(function () {
 
         //show only the start button
         document.getElementById("start-button").style.display = "block";
-        $("#start-button").html("START")
+        $("#start-button").html("START");
     };
 
     function gameSetup() {
@@ -253,8 +257,8 @@ $(document).ready(function () {
         //hide the gif
         document.getElementById("gifHolder").style.display = "none";
         document.getElementById("questionRow").style.display = "none";
-        firstClick = true
-        showStartButton()
+        firstClick = true;
+        showStartButton();
 
         //reset the counters
         numberCorrectAnswers = 0;
@@ -270,7 +274,7 @@ $(document).ready(function () {
         numberWrongAnswers++
 
         //state times up
-        $("#timerRow").html("Times up!")
+        $("#timerRow").html("Times up!");
 
         //change the colors
         document.getElementById("timerRow").style.backgroundColor = "rgb(238, 186, 76)";  //yellow
@@ -289,7 +293,7 @@ $(document).ready(function () {
         setTimeout(function () {
 
             //clear and hide the gifholder
-            $("#gifHolder").attr("src", "")
+            $("#gifHolder").attr("src", "");
             document.getElementById("gifHolder").style.display = "none";
 
             //reset the colors of the timer row
@@ -303,7 +307,7 @@ $(document).ready(function () {
             postQuestion();
 
             //now allow a click
-            allowClick = true
+            allowClick = true;
 
         }, 3000);
 
@@ -314,23 +318,23 @@ $(document).ready(function () {
     function correctAnswer() {
 
         //don;t allow a click
-        allowClick = false
+        allowClick = false;
 
         //increment the correct answer counter
-        numberCorrectAnswers++
+        numberCorrectAnswers++;
 
         //stop timer
-        stopTimer()
+        stopTimer();
 
         //state answer is correct
-        $("#timerRow").html("CORRECT!")
+        $("#timerRow").html("CORRECT!");
 
         //change the colors of the timer row
         document.getElementById("timerRow").style.backgroundColor = "rgb(35, 181, 175)"; //light green
         document.getElementById("timerRow").style.color = "rgb(237,233,232)";   //background white
 
         //show the correct answer
-        showCorrectAnswer(correctIndex)
+        showCorrectAnswer(correctIndex);
 
         //after 1 second of showing correct answer...show gifs
         setTimeout(function () {
@@ -342,16 +346,15 @@ $(document).ready(function () {
         //after 3 seconds of gifs post new question
         setTimeout(function () {
 
-            $("#gifHolder").attr("src", "")
+            $("#gifHolder").attr("src", "");
             document.getElementById("gifHolder").style.display = "none";
             document.getElementById("timerRow").style.backgroundColor = "darkcyan"; //green
             document.getElementById("timerRow").style.color = "rgb(237,233,232)"; //background white
-            resetButtons()
-            postQuestion()
-            // startTimer()
+            resetButtons();
+            postQuestion();
 
             //now allow a click
-            allowClick = true
+            allowClick = true;
         }, 3000);
 
     };
@@ -359,10 +362,10 @@ $(document).ready(function () {
     function badAnswer() {
 
         //don't allow a click
-        allowClick = false
+        allowClick = false;
 
         //stop the timer
-        stopTimer()
+        stopTimer();
 
         //state answer is incorrect
         $("#timerRow").html("WRONG!");
@@ -372,7 +375,7 @@ $(document).ready(function () {
         document.getElementById("timerRow").style.color = "rgb(237,233,232)"; //tomato red
 
         //increment the wrong answer counter
-        numberWrongAnswers++
+        numberWrongAnswers++;
 
         //show the correct answer
         showCorrectAnswer(correctIndex);
@@ -389,15 +392,15 @@ $(document).ready(function () {
 
         //after 3 seconds of gifs post new question
         setTimeout(function () {
-            $("#gifHolder").attr("src", "")
+            $("#gifHolder").attr("src", "");
             document.getElementById("gifHolder").style.display = "none";
             document.getElementById("timerRow").style.backgroundColor = "darkcyan";
             document.getElementById("timerRow").style.color = "rgb(237,233,232)"; //background white
-            resetButtons()
-            postQuestion()
+            resetButtons();
+            postQuestion();
 
             //now allow a click
-            allowClick = true
+            allowClick = true;
         }, 4000);
 
     };
@@ -406,31 +409,27 @@ $(document).ready(function () {
 
         switch (correctLetter) {
             case "A":
-                // document.getElementById("A").style.display = "block";
-                document.getElementById("A").style.background = "rgb(238, 186, 76)" //yelloworange
+                document.getElementById("A").style.background = "rgb(238, 186, 76)"; //yelloworange
                 break;
             case "B":
-                // document.getElementById("B").style.display = "block";
-                document.getElementById("B").style.background = "rgb(238, 186, 76)" //yelloworange
+                document.getElementById("B").style.background = "rgb(238, 186, 76)"; //yelloworange
                 break;
             case "C":
-                // document.getElementById("C").style.display = "block";
-                document.getElementById("C").style.background = "rgb(238, 186, 76)" //yelloworange
+                document.getElementById("C").style.background = "rgb(238, 186, 76)"; //yelloworange
                 break;
             case "D":
-                // document.getElementById("D").style.display = "block";
-                document.getElementById("D").style.background = "rgb(238, 186, 76)" //yelloworange
+                document.getElementById("D").style.background = "rgb(238, 186, 76)"; //yelloworange
                 break;
         }
 
     }
 
     function loadAnswers(questionID) {
-        // alert(questionID)
-        $("#A").html(question.choiceA[questionID])
-        $("#B").html(question.choiceB[questionID])
-        $("#C").html(question.choiceC[questionID])
-        $("#D").html(question.choiceD[questionID])
+        //load the choices 
+        $("#A").html(question.choiceA[questionID]);
+        $("#B").html(question.choiceB[questionID]);
+        $("#C").html(question.choiceC[questionID]);
+        $("#D").html(question.choiceD[questionID]);
     };
 
     function startTimer() {
@@ -447,10 +446,10 @@ $(document).ready(function () {
             if (timer === 0) {
 
                 //  ...run the stop function.
-                stopTimer()
+                stopTimer();
 
                 //  Alert the user that time is up.
-                timesUp()
+                timesUp();
             }
         }, 1000)
 
@@ -475,13 +474,13 @@ $(document).ready(function () {
                 document.getElementById("questionRow").style.display = "block";
                 document.getElementById("incorrectAnswers").style.display = "none";
                 document.getElementById("correctAnswers").style.display = "none";
-                postQuestion()
-                startTimer()
+                postQuestion();
+                startTimer();
             }
             else {
 
                 if (correctAnswerIs == this.id) {
-                    correctAnswer()
+                    correctAnswer();
                 }
                 else {
 
