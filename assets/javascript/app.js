@@ -1,9 +1,11 @@
 $(document).ready(function () {
-    showStartButton()
-    //variables
 
-    var asked = [];
-    var timer = 5;
+    //show the start button to begin the game
+    showStartButton()
+
+    //variables
+    var asked = [];  //questions that are asked are pushed into asked array
+    var timer = 10;  //timer is set to 10 seconds
     var intervalId;
     var correctAnswerIs;
     var correctIndex;
@@ -39,7 +41,6 @@ $(document).ready(function () {
 
     };
 
-    //20
     var wrongAnswer = {
         gif: ["https://media.giphy.com/media/3o7qE1bQOcKqwBGUQ8/giphy.gif",
             "https://media.giphy.com/media/XQVEc2S7knPBm/giphy.gif",
@@ -63,7 +64,6 @@ $(document).ready(function () {
             "https://media.giphy.com/media/PNug04TwLpA0i1d54D/giphy.gif"]
     };
 
-    //19
     var rightAnswer = {
         gif: ["https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif",
             "https://media.giphy.com/media/xUPGcMzwkOY01nj6hi/giphy.gif",
@@ -144,32 +144,29 @@ $(document).ready(function () {
     }
 
     function postQuestion() {
+console.log(asked)
         //is game still on?
-        if (asked.length < 6) {
+        if (asked.length < 10) {
 
             //get the next question
             var findNewQuestion = true;
-            var alreadyAsked = false;
 
+            //keep looking until you find a question that hasn't been asked yet
             while (findNewQuestion) {
+
+                //pick a random number
                 var random = Math.floor(Math.random() * question.text.length)
 
                 //check to see if the question has already been asked (part of the asked array)
-                for (i = 0; i < asked.length; i++) {
-                    if (asked[i] === random) {
+                        if (asked.indexOf(random)> 0){
+
                         //question asked, pick new question
-                        alreadyAsked = true;
+                        findNewQuestion=true;
                     } else {
-                        alreadyAsked = false;
+                        //not asked yet, exit loop
+                        findNewQuestion=false;
                     }
                 }
-
-                //found a question not yet asked, exit the while loop
-                if (alreadyAsked === false) {
-                    findNewQuestion = false;
-                }
-
-            }
 
             //add the question to the asked array
             asked.push(random);
@@ -191,13 +188,18 @@ $(document).ready(function () {
 
             //start the timer again
             startTimer();
-            //game still on?
 
         }
         else {
             //GAME OVER
+
+            //display game over
             $("#timerRow").html("Game Over")
+
+            //stop the timer
             stopTimer()
+
+            //clear and hide the gif holder
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
 
@@ -208,6 +210,7 @@ $(document).ready(function () {
             document.getElementById("incorrectAnswers").style.display = "block";
             document.getElementById("incorrectAnswers").innerHTML = "Incorrect Answers: " + numberWrongAnswers;
              
+            //reset the game
             gameSetup()
         };
 
@@ -263,35 +266,44 @@ $(document).ready(function () {
         //don;t allow a click
         allowClick=false;
 
+        //increment the wrong answer counter
         numberWrongAnswers++
 
         //state times up
         $("#timerRow").html("Times up!")
 
+        //change the colors
+        document.getElementById("timerRow").style.backgroundColor="rgb(237,233,232)";
+        document.getElementById("timerRow").style.color="darkorange";
+
         //display the correct answer
         showCorrectAnswer(correctIndex);
 
         //after 1 second of showing correct answer...show gifs
-        clearInterval(intervalId);
         setTimeout(function () {
             showGif();
             loadGif("timesUp");
         }, 1000);
 
-        clearInterval(intervalId);
         //after 3 seconds of gifs post new question
-
         setTimeout(function () {
 
-            //clear the gifholder
+            //clear and hide the gifholder
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
+
+            //reset the colors of the timer row
+            document.getElementById("timerRow").style.backgroundColor="darkcyan";
+            document.getElementById("timerRow").style.color="rgb(237,233,232)";
+
+            //reset the buttons
             resetButtons();
+
+            //find the next question
             postQuestion();
             
             //now allow a click
             allowClick=true
-
 
         }, 3000);
 
@@ -304,6 +316,8 @@ $(document).ready(function () {
         //don;t allow a click
         allowClick=false
 
+        //increment the correct answer counter
+        numberCorrectAnswers++
 
         //stop timer
         stopTimer()
@@ -311,20 +325,27 @@ $(document).ready(function () {
         //state answer is correct
         $("#timerRow").html("CORRECT!")
 
+        //change the colors of the timer row
+        document.getElementById("timerRow").style.backgroundColor="rgb(237,233,232)";
+        document.getElementById("timerRow").style.color="green";
+
         //show the correct answer
         showCorrectAnswer(correctIndex)
 
-        numberCorrectAnswers++
-
+        //after 1 second of showing correct answer...show gifs
         setTimeout(function () {
             showGif();
             loadGif("winner");
 
         }, 1000);
 
+        //after 3 seconds of gifs post new question
         setTimeout(function () {
+
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
+            document.getElementById("timerRow").style.backgroundColor="darkcyan";
+            document.getElementById("timerRow").style.color="rgb(237,233,232)";
             resetButtons()
             postQuestion()
             // startTimer()
@@ -337,39 +358,47 @@ $(document).ready(function () {
 
     function badAnswer() {
 
-        //don;t allow a click
+        //don't allow a click
         allowClick=false
 
+        //stop the timer
         stopTimer()
 
         //state answer is incorrect
         $("#timerRow").html("WRONG!");
-        // $("#timerRow").css("background-color","red");​
+        
+        //change color of timer row
+        document.getElementById("timerRow").style.backgroundColor="rgb(237,233,232)";
+        document.getElementById("timerRow").style.color="red";
 
-
+        //increment the wrong answer counter
         numberWrongAnswers++
 
         //show the correct answer
         showCorrectAnswer(correctIndex);
 
+        //set time out for 1 second
         setTimeout(function () {
+
+            //gif management
             showGif();
             loadGif("loser");
 
         }, 1000);
 
+
+        //after 3 seconds of gifs post new question
         setTimeout(function () {
             $("#gifHolder").attr("src", "")
             document.getElementById("gifHolder").style.display = "none";
-            // $("#timerRow").css({'background-color':''});​
+            document.getElementById("timerRow").style.backgroundColor="darkcyan";
+            document.getElementById("timerRow").style.color="rgb(237,233,232)";
             resetButtons()
             postQuestion()
-            // startTimer()
 
             //now allow a click
             allowClick=true
         }, 3500);
-
 
     };
     function showCorrectAnswer(index) {
@@ -406,7 +435,7 @@ $(document).ready(function () {
 
     function startTimer() {
         clearInterval(intervalId);
-        timer = 5;
+        timer = 10;
         intervalId = setInterval(function () {
             //  Decrease number by one.
             timer--;
@@ -422,7 +451,6 @@ $(document).ready(function () {
 
                 //  Alert the user that time is up.
                 timesUp()
-                clearInterval(intervalId);
             }
         }, 1000)
 
@@ -454,12 +482,10 @@ $(document).ready(function () {
 
                 if (correctAnswerIs == this.id) {
                     correctAnswer()
-                    startTimer()
                 }
                 else {
 
                     badAnswer();
-                    startTimer()
 
                 }
 

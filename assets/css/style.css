@@ -22,11 +22,12 @@ border-radius: 25px;
 color:white;
 text-align: center;
 border-style: solid;
-border-color: darkcyan;
 border-width: 2px;
 background-color: darkcyan;
+/* background-color:rgb(237,233,232); */
 margin-top:20px;
 margin-bottom:20px;
+color:rgb(237,233,232);
 }
 
 body {
