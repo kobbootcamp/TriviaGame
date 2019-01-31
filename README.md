@@ -7,3 +7,5 @@ If the player selects the correct answer, a congratulatory gif is randomly selec
 If the player selects an incorrect answer, a gif indicating that a wrong answer was selected is randomly chosen and displayed.
 If time runs out with an answer selected, a gif indicating that time is up is randomly chosen and displayed.
 The final screen shows the number of correct and incorrect answers.
+
+This application uses HTML, CSS, Javascript, Jquery, and Bootstrap. A randomly chosen gif is displayed based on correct/incorrect answers, and a separate randomly chosen gif is displayed if time runs out.
